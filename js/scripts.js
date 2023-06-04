@@ -10,6 +10,7 @@ $(document).ready(function() {
     $('#list').append(li);
 
     $('#input').val('');
+    $('#input').focus(); // Set focus to the input field
 
     li.on('dblclick', function() {
       $(this).toggleClass('strike');
@@ -27,5 +28,12 @@ $(document).ready(function() {
 
   $('#button').on('click', function() {
     newItem();
+  });
+
+  $('#input').on('keydown', function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault(); // Prevent form submission
+      newItem();
+    }
   });
 });
